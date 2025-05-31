@@ -8,7 +8,11 @@ import stationRoutes from "./routes/stations.js";
 dotenv.config();
 
 const app = express();
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://charging-stations-backend.vercel.app",
+  })
+);
 app.use(express.json());
 
 // Health-check route
