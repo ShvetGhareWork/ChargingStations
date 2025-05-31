@@ -1,9 +1,7 @@
 <template>
-  <div class="flex">
+  <div class="flex flex-col min-h-screen">
     <Sidebar />
-    <div
-      class="ml-64 w-[calc(100%-16rem)] h-screen overflow-auto bg-gray-50 p-6"
-    >
+    <div class="flex-1 overflow-auto bg-gray-50 pt-16">
       <router-view />
     </div>
   </div>

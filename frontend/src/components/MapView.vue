@@ -1,5 +1,7 @@
 <template>
-  <div id="map" class="h-[400px] w-full rounded shadow"></div>
+  <div class="map-wrapper">
+    <div id="map"></div>
+  </div>
 </template>
 
 <script setup>
@@ -30,7 +32,6 @@ onMounted(() => {
   renderMarkers();
 });
 
-// watch for changes and update markers
 watch(
   () => props.stations,
   () => {
@@ -39,9 +40,8 @@ watch(
   { immediate: true, deep: true }
 );
 
-// custom icon config
 const customIcon = L.icon({
-  iconUrl: "https://cdn-icons-png.flaticon.com/512/252/252025.png", // or local asset
+  iconUrl: "https://cdn-icons-png.flaticon.com/512/252/252025.png",
   iconSize: [32, 32],
   iconAnchor: [16, 32],
   popupAnchor: [0, -32],
@@ -69,9 +69,3 @@ function renderMarkers() {
   });
 }
 </script>
-
-<style scoped>
-#map {
-  height: 400px;
-}
-</style>

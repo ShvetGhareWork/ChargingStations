@@ -1,6 +1,6 @@
 <template>
-  <div class="p-6">
-    <h1 class="text-2xl font-bold mb-4">Add New Charge Base</h1>
+  <div class="add-charge-base-container">
+    <h1 class="add-charge-base-title">Add New Charge Base</h1>
     <StationForm :isEdit="false" @submit="createStation" />
   </div>
 </template>

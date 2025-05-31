@@ -1,16 +1,29 @@
 <template>
-  <div class="p-4 max-w-sm mx-auto mt-10">
-    <h2 class="text-2xl mb-4">Login</h2>
-    <form @submit.prevent="loginUser">
-      <input v-model="email" placeholder="Email" class="input" />
-      <input
-        type="password"
-        v-model="password"
-        placeholder="Password"
-        class="input"
-      />
-      <button type="submit" class="btn w-full">Login</button>
-    </form>
+  <div class="login-page">
+    <!-- Left Half (Image) -->
+    <div class="login-image">
+      <img src="" alt="" />
+    </div>
+
+    <!-- Right Half (Login Form) -->
+    <div class="login-form">
+      <form @submit.prevent="loginUser" class="form-container">
+        <h2 class="title">Login</h2>
+        <input
+          v-model="email"
+          type="email"
+          placeholder="Enter email"
+          class="input"
+        />
+        <input
+          v-model="password"
+          type="password"
+          placeholder="Enter password"
+          class="input"
+        />
+        <button type="submit" class="btn">Login</button>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -18,6 +31,7 @@
 import { ref } from "vue";
 import api from "../services/api";
 import { useRouter } from "vue-router";
+// import "/evcharing"; // Ensure you have the correct path to your CSS
 
 const email = ref("");
 const password = ref("");
@@ -36,20 +50,3 @@ const loginUser = async () => {
   }
 };
 </script>
-
-<style scoped>
-.input {
-  display: block;
-  margin-bottom: 12px;
-  padding: 10px;
-  width: 100%;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-.btn {
-  background: #2563eb;
-  color: white;
-  padding: 10px;
-  border-radius: 4px;
-}
-</style>

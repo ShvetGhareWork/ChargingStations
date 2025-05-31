@@ -1,7 +1,9 @@
 <template>
-  <div class="p-4">
-    <h2 class="text-2xl mb-4 font-bold">Charger Map</h2>
-    <MapView :stations="stations" />
+  <div class="map-page">
+    <h2>Charger Map</h2>
+    <div class="map-wrapper">
+      <MapView :stations="stations" />
+    </div>
   </div>
 </template>
 

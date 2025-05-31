@@ -1,55 +1,82 @@
 <template>
-  <div
-    class="fixed top-0 left-0 w-full bg-white shadow-md flex items-center justify-between px-6 py-3 z-50"
-  >
+  <div class="navbar">
     <!-- Logo -->
-    <div class="text-2xl font-bold flex items-center space-x-2">
-      ⚡ <span>ChargeBase</span>
-    </div>
+    <div class="nav-logo">⚡ <span>ChargeMe</span></div>
 
     <!-- Desktop Navigation -->
-    <nav class="hidden md:flex items-center space-x-6">
-      <router-link
-        to="/active"
-        class="text-gray-700 font-medium hover:text-blue-600"
-        active-class="text-blue-600 font-semibold"
-      >
-        🔌 Active Stations
-      </router-link>
-      <router-link
-        to="/add"
-        class="text-gray-700 font-medium hover:text-blue-600"
-        active-class="text-blue-600 font-semibold"
-      >
-        ➕ Add Station
-      </router-link>
-      <router-link
-        to="/map"
-        class="text-gray-700 font-medium hover:text-blue-600"
-        active-class="text-blue-600 font-semibold"
-      >
-        🗺️ Map View
-      </router-link>
-      <router-link
-        to="/login"
-        class="text-gray-700 font-medium hover:text-blue-600"
-        active-class="text-blue-600 font-semibold"
-      >
-        🔐 Login
-      </router-link>
-      <router-link
-        to="/register"
-        class="text-gray-700 font-medium hover:text-blue-600"
-        active-class="text-blue-600 font-semibold"
-      >
-        📝 Register
-      </router-link>
+    <nav class="desktop-nav">
+      <NavLinks />
     </nav>
+
+    <!-- Mobile Menu Button -->
+    <button @click="menuOpen = !menuOpen" class="mobile-menu-button">☰</button>
+  </div>
+
+  <!-- Mobile Dropdown Menu -->
+  <div v-if="menuOpen" class="mobile-menu">
+    <NavLinks @link-clicked="menuOpen = false" />
   </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, defineComponent, h } from "vue";
+import { RouterLink } from "vue-router";
 
 const menuOpen = ref(false);
+
+// Reusable NavLinks component
+const NavLinks = defineComponent({
+  emits: ["link-clicked"],
+  setup(props, { emit }) {
+    const handleClick = () => emit("link-clicked");
+    return () =>
+      h("div", { class: "nav-links" }, [
+        h(
+          RouterLink,
+          {
+            to: "/active",
+            class: "nav-link",
+            onClick: handleClick,
+          },
+          "Active Stations"
+        ),
+        h(
+          RouterLink,
+          {
+            to: "/add",
+            class: "nav-link",
+            onClick: handleClick,
+          },
+          "Add Station"
+        ),
+        h(
+          RouterLink,
+          {
+            to: "/map",
+            class: "nav-link",
+            onClick: handleClick,
+          },
+          "Map View"
+        ),
+        h(
+          RouterLink,
+          {
+            to: "/login",
+            class: "nav-link",
+            onClick: handleClick,
+          },
+          "Login"
+        ),
+        h(
+          RouterLink,
+          {
+            to: "/register",
+            class: "nav-link",
+            onClick: handleClick,
+          },
+          "Register"
+        ),
+      ]);
+  },
+});
 </script>
