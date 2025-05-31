@@ -17,6 +17,8 @@ app.use(
 );
 app.use(express.json());
 
+app.options("*", cors()); // allow preflight for all routes
+
 // Health-check route
 app.get("/", (req, res) => {
   res.send("🚀 Charging Station API is running!");
