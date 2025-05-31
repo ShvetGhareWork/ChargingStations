@@ -8,15 +8,28 @@ import stationRoutes from "./routes/stations.js";
 dotenv.config();
 
 const app = express();
+const allowedOrigins = [
+  "https://charging-stations-frontend.vercel.app",
+  "https://charging-stations-frontend-e6hr6bxb5-shvetghareworks-projects.vercel.app",
+];
+
 app.use(
   cors({
-    origin: "https://charging-stations-frontend.vercel.app",
+    origin: function (origin, callback) {
+      // Allow requests with no origin like Postman or curl
+      if (!origin) return callback(null, true);
+
+      if (allowedOrigins.indexOf(origin) !== -1) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    credentials: true, // if you use cookies or auth headers
+    credentials: true,
   })
 );
 app.use(express.json());
-
 app.options("*", cors()); // allow preflight for all routes
 
 // Health-check route
