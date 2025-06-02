@@ -31,6 +31,7 @@
 import { ref } from "vue";
 import api from "../services/api";
 import { useRouter } from "vue-router";
+import { isLoggedIn } from "../state.js";
 // import "/evcharing"; // Ensure you have the correct path to your CSS
 
 const email = ref("");
@@ -44,6 +45,7 @@ const loginUser = async () => {
       password: password.value,
     });
     localStorage.setItem("token", res.data.token);
+    isLoggedIn.value = true; // ✅ Update reactive state
     router.push("/active");
   } catch (err) {
     alert("Login failed.");

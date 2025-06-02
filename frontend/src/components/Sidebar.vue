@@ -21,26 +21,24 @@
 </template>
 
 <script setup>
-import { ref, defineComponent, h } from "vue";
+import { ref, defineComponent, h, watch } from "vue";
 import { RouterLink, useRouter } from "vue-router";
+import { isLoggedIn } from "../state.js"; // import reactive login state
 
 const menuOpen = ref(false);
 const router = useRouter();
 
-// Logout handler
 const handleLogout = () => {
   localStorage.removeItem("token");
+  isLoggedIn.value = false;
   router.push("/login");
 };
 
-// Reusable NavLinks component
 const NavLinks = defineComponent({
   emits: ["link-clicked", "logout"],
   setup(props, { emit }) {
     const handleClick = () => emit("link-clicked");
     const handleLogout = () => emit("logout");
-
-    const loggedIn = !!localStorage.getItem("token");
 
     return () =>
       h("div", { class: "nav-links" }, [
@@ -71,7 +69,7 @@ const NavLinks = defineComponent({
           },
           "Map View"
         ),
-        !loggedIn &&
+        !isLoggedIn.value &&
           h(
             RouterLink,
             {
@@ -81,7 +79,7 @@ const NavLinks = defineComponent({
             },
             "Login"
           ),
-        !loggedIn &&
+        !isLoggedIn.value &&
           h(
             RouterLink,
             {
@@ -91,7 +89,7 @@ const NavLinks = defineComponent({
             },
             "Register"
           ),
-        loggedIn &&
+        isLoggedIn.value &&
           h(
             "button",
             {
@@ -106,7 +104,7 @@ const NavLinks = defineComponent({
                 cursor: "pointer",
                 padding: 0,
                 fontWeight: "500",
-                color: "#ef4444", // red color for logout
+                color: "#ef4444",
               },
             },
             "Logout"
