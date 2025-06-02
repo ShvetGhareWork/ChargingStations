@@ -5,7 +5,7 @@ import {
   createStation,
   updateStation,
   deleteStation,
-} from "../controllers/chargingStationController.js";
+} from "../controllers/stationController.js";
 import { verifyToken } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
