@@ -42,7 +42,7 @@
 import { ref } from "vue";
 import api from "../services/api";
 import { useRouter } from "vue-router";
-import { Notification } from "../components/Notification.vue"; // Import Notification component
+import Notification from "../components/Notification.vue";
 
 const name = ref("");
 const email = ref("");

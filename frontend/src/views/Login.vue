@@ -43,7 +43,6 @@ import api from "../services/api";
 import { useRouter } from "vue-router";
 import { isLoggedIn } from "../services/state.js";
 import Notification from "../components/Notification.vue"; // Import Notification component
-// import "/evcharing"; // Ensure you have the correct path to your CSS
 
 const email = ref("");
 const password = ref("");
