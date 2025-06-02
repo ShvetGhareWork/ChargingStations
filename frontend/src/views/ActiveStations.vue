@@ -5,7 +5,10 @@
   <div class="stations-wrapper">
     <h2 class="page-title">Active Stations</h2>
 
-    <div v-if="stations.length > 0" class="stations-grid">
+    <!-- Show loader while loading -->
+    <Loader v-if="loading" />
+
+    <div v-if="!loading && stations.length > 0" class="stations-grid">
       <StationCard
         v-for="station in stations"
         :key="station._id"
@@ -15,7 +18,7 @@
       />
     </div>
 
-    <div v-else class="no-stations">
+    <div v-else-if="!loading && stations.length === 0" class="no-stations">
       <p>No active stations now.</p>
       <button @click="goToAdd" class="create-button">Create One</button>
     </div>
@@ -36,14 +39,24 @@ import api from "../services/api";
 import StationCard from "../components/StationCard.vue";
 import StationForm from "../components/StationForm.vue";
 import Sidebar from "../components/Sidebar.vue";
+import Loader from "../components/Loader.vue"; // Import loader
 
 const stations = ref([]);
 const editingStation = ref(null);
+const loading = ref(false); // loading state
 const router = useRouter();
 
 const fetchStations = async () => {
-  const res = await api.get("/stations");
-  stations.value = res.data;
+  loading.value = true;
+  try {
+    const res = await api.get("/stations");
+    stations.value = res.data;
+  } catch (err) {
+    console.error("Failed to fetch stations", err);
+    stations.value = [];
+  } finally {
+    loading.value = false;
+  }
 };
 
 onMounted(fetchStations);
@@ -64,8 +77,13 @@ const updateStation = async (updatedData) => {
 };
 
 const deleteStation = async (id) => {
-  await api.delete(`/stations/${id}`);
-  fetchStations();
+  try {
+    await api.delete(`/stations/${id}`);
+    fetchStations();
+  } catch (err) {
+    console.error("Delete failed", err);
+    alert("Delete failed.");
+  }
 };
 
 const goToAdd = () => {
