@@ -39,7 +39,7 @@ app.get("/", (req, res) => {
 
 // Routes
 app.use("/api/auth", authRoutes);
-app.use("/api/stations", stationRoutes);
+app.use("/api/auth/stations", stationRoutes);
 
 // Connect DB & Start Server
 mongoose
