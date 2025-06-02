@@ -1,7 +1,7 @@
 <template>
   <div class="navbar">
     <!-- Logo -->
-    <div class="nav-logo">⚡ <span>ChargeMe</span></div>
+    <div class="nav-logo">⚡ <span class="nav-name">ChargeMe</span></div>
 
     <!-- Desktop Navigation -->
     <nav class="desktop-nav">

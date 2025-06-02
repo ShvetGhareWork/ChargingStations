@@ -4,8 +4,10 @@ import AddStation from "../views/AddStation.vue";
 import Login from "../views/Login.vue"; // ⬅️ import your Login view
 import Register from "../views/Register.vue";
 import MapPage from "../views/MapPage.vue";
+import LandingPage from "../views/LandingPage.vue";
 
 const routes = [
+  { path: "/", name: "Landing", component: LandingPage }, // start at login page
   { path: "/register", name: "Register", component: Register }, // start at login page
   { path: "/login", name: "Login", component: Login }, // ⬅️ add this route
   { path: "/active", name: "ActiveStations", component: ActiveStations },

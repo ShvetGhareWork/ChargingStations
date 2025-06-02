@@ -246,8 +246,10 @@ body {
 .map-page {
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
   height: 100%;
-  margin-top: 100px; /* Adjusted to account for fixed navbar */
   box-sizing: border-box;
 }
 
@@ -371,17 +373,34 @@ body {
 /* StationForm.css */
 
 .station-form-container {
-  padding: 1rem;
+  position: relative;
+  padding: 1.5rem; /* a bit more padding */
   border: 1px solid #f9fafb; /* Tailwind border-gray-200 */
   border-radius: 0.5rem; /* rounded */
-  background-color: #f9fafb; /* bg-gray-50 */
+  background-color: rgba(249, 250, 251, 0.9); /* semi-transparent bg-gray-50 */
   max-width: 500px;
-  margin-top: 100px; /* Adjusted to account for fixed navbar */
+  margin-top: 100px; /* for fixed navbar offset */
   margin-left: auto;
   margin-right: auto;
-  /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); shadow-md */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* subtle shadow */
   display: flex;
   flex-direction: column;
+  z-index: 1;
+  backdrop-filter: blur(8px); /* subtle blur behind container */
+}
+
+.background-wrapper {
+  position: fixed; /* fixed to viewport */
+  top: 0;
+  left: 0;
+  margin-top: 60px;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("https://media.istockphoto.com/id/1330589502/photo/electric-vehicle-charging-station.jpg?s=2048x2048&w=is&k=20&c=WiX5WjfoaMZT3vjBGAcGXxQD3O2aKYo_lfYc0e7Aq3Q=");
+  background-position: center;
+  background-size: cover;
+  filter: brightness(0.7);
+  z-index: 0;
 }
 
 .station-form-title {
@@ -446,4 +465,154 @@ body {
   .add-charge-base-container {
     padding: 1rem;
   }
+}
+
+/* Landing page  */
+/* LandingPage.css */
+
+* {
+  box-sizing: border-box;
+}
+
+body,
+html,
+#app {
+  margin: 0;
+  height: 100%;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.background {
+  /* Background image covers entire viewport */
+  background-image: url("https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1470&q=80");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  color: white;
+}
+
+/* Overlay to darken background for readability */
+.background::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 0;
+}
+
+.navbar {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  height: 60px;
+  padding: 0 2rem;
+  font-weight: 700;
+  font-size: 1.25rem;
+  background: transparent;
+  color: white;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  height: calc(100vh - 60px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+}
+
+.subtitle {
+  font-size: 1.125rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
+}
+
+.more-info {
+  font-size: 1rem;
+  margin-bottom: 3rem;
+  max-width: 600px;
+  line-height: 1.5;
+  color: #d1d5db; /* lighter gray */
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  max-width: 280px;
+}
+
+@media (min-width: 640px) {
+  .buttons {
+    flex-direction: row;
+    justify-content: center;
+    max-width: none;
+  }
+}
+
+.button {
+  flex: 1;
+  padding: 0.5rem 1.5rem; /* smaller than before */
+  font-size: 1rem; /* smaller font */
+  border-radius: 0.5rem;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+  font-weight: 600;
+  border: 2px solid transparent;
+  user-select: none;
+}
+
+.button-primary {
+  background-color: #16a34a;
+  color: white;
+  border-color: #16a34a;
+  box-shadow: 0 2px 6px rgba(22, 163, 74, 0.5);
+}
+
+.button-primary:hover {
+  background-color: #15803d;
+  border-color: #15803d;
+}
+
+.button-outline {
+  background-color: transparent;
+  color: #16a34a;
+  border-color: #16a34a;
+  box-shadow: 0 2px 6px rgba(22, 163, 74, 0.3);
+}
+
+.button-outline:hover {
+  background-color: #d1fae5;
+  color: #166534;
+  border-color: #16a34a;
+}
+
+.nav-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: black;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
 }

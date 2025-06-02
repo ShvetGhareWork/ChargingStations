@@ -1,45 +1,49 @@
 <template>
-  <div class="station-form-container">
-    <h3 class="station-form-title">{{ isEdit ? "Edit" : "Add" }} Station</h3>
-    <form @submit.prevent="submitForm">
-      <input
-        v-model="station.name"
-        placeholder="Name"
-        class="station-form-input"
-      />
+  <div>
+    <div class="background-wrapper"></div>
 
-      <input
-        v-model="station.latitude"
-        placeholder="Latitude"
-        class="station-form-input"
-      />
-      <input
-        v-model="station.longitude"
-        placeholder="Longitude"
-        class="station-form-input"
-      />
+    <div class="station-form-container">
+      <h3 class="station-form-title">{{ isEdit ? "Edit" : "Add" }} Station</h3>
+      <form @submit.prevent="submitForm">
+        <input
+          v-model="station.name"
+          placeholder="Name"
+          class="station-form-input"
+        />
 
-      <input
-        v-model="station.powerOutput"
-        placeholder="Power Output (kW)"
-        class="station-form-input"
-      />
+        <input
+          v-model="station.latitude"
+          placeholder="Latitude"
+          class="station-form-input"
+        />
+        <input
+          v-model="station.longitude"
+          placeholder="Longitude"
+          class="station-form-input"
+        />
 
-      <input
-        v-model="station.connectorType"
-        placeholder="Connector Type"
-        class="station-form-input"
-      />
+        <input
+          v-model="station.powerOutput"
+          placeholder="Power Output (kW)"
+          class="station-form-input"
+        />
 
-      <select v-model="station.status" class="station-form-input">
-        <option>Active</option>
-        <option>Inactive</option>
-      </select>
+        <input
+          v-model="station.connectorType"
+          placeholder="Connector Type"
+          class="station-form-input"
+        />
 
-      <button type="submit" class="station-form-button mt-2">
-        {{ isEdit ? "Update" : "Add" }}
-      </button>
-    </form>
+        <select v-model="station.status" class="station-form-input">
+          <option>Active</option>
+          <option>Inactive</option>
+        </select>
+
+        <button type="submit" class="station-form-button mt-2">
+          {{ isEdit ? "Update" : "Add" }}
+        </button>
+      </form>
+    </div>
   </div>
 </template>
 
