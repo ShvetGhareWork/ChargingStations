@@ -505,7 +505,7 @@ body {
   background-size: cover;
   background-position: center;
   color: white; /* text contrast on background */
-  /* z-index: ; */
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -791,7 +791,6 @@ html,
 }
 
 /* Loader */
-
 .loader {
   border: 8px solid #f3f3f3; /* Light gray */
   border-top: 8px solid #3498db; /* Blue */

@@ -16,16 +16,25 @@
           type="email"
           placeholder="Enter email"
           class="input"
+          :disabled="loading"
         />
         <input
           v-model="password"
           type="password"
           placeholder="Enter password"
           class="input"
+          :disabled="loading"
         />
-        <button type="submit" class="btn">Login</button>
+        <button type="submit" class="btn" :disabled="loading">
+          <span v-if="loading">Logging in...</span>
+          <span v-else>Login</span>
+        </button>
       </form>
     </div>
+
+    <!-- Loader overlay -->
+    <Loader v-if="loading" />
+
     <Notification v-if="visible" message="Login successful!" type="success" />
     <Notification
       v-if="showErrorNotification"
@@ -40,24 +49,37 @@ import { ref } from "vue";
 import api from "../services/api";
 import { useRouter } from "vue-router";
 import { isLoggedIn } from "../services/state.js";
-import Notification from "../components/Notification.vue"; // Import Notification component
+import Notification from "../components/Notification.vue";
 import Sidebar from "../components/Sidebar.vue";
+import Loader from "../components/Loader.vue";
 
 const email = ref("");
 const password = ref("");
 const router = useRouter();
 
+const loading = ref(false);
+const visible = ref(false);
+const showErrorNotification = ref(false);
+
 const loginUser = async () => {
+  loading.value = true;
+  showErrorNotification.value = false;
+  visible.value = false;
+
   try {
     const res = await api.post("/auth/login", {
       email: email.value,
       password: password.value,
     });
     localStorage.setItem("token", res.data.token);
-    isLoggedIn.value = true; // ✅ Update reactive state
+    isLoggedIn.value = true;
+    visible.value = true;
     router.push("/active");
   } catch (err) {
+    showErrorNotification.value = true;
     alert("Login failed.");
+  } finally {
+    loading.value = false;
   }
 };
 </script>
