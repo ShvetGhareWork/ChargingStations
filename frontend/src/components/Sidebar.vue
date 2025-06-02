@@ -23,7 +23,7 @@
 <script setup>
 import { ref, defineComponent, h, watch } from "vue";
 import { RouterLink, useRouter } from "vue-router";
-import { isLoggedIn } from "../state.js"; // import reactive login state
+import { isLoggedIn } from "../services/state.js"; // import reactive login state
 
 const menuOpen = ref(false);
 const router = useRouter();
