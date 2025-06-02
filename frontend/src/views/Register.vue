@@ -25,17 +25,17 @@
         <button type="submit" class="btn">Register</button>
       </form>
     </div>
+    <Notification
+      v-if="showNotification"
+      message="Registration successful! Please login."
+      type="success"
+    />
+    <Notification
+      v-if="showErrorNotification"
+      message="Registration failed. Please try again."
+      type="error"
+    />
   </div>
-  <Notification
-    v-if="showNotification"
-    message="Registration successful! Please login."
-    type="success"
-  />
-  <Notification
-    v-if="showErrorNotification"
-    message="Registration failed. Please try again."
-    type="error"
-  />
 </template>
 
 <script setup>
