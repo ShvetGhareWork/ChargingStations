@@ -31,7 +31,7 @@
 import { ref } from "vue";
 import api from "../services/api";
 import { useRouter } from "vue-router";
-import { isLoggedIn } from "../state.js";
+import { isLoggedIn } from "../services/state.js";
 // import "/evcharing"; // Ensure you have the correct path to your CSS
 
 const email = ref("");
