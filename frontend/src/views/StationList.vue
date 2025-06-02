@@ -1,4 +1,5 @@
 <template>
+  <Sidebar />
   <div class="p-4">
     <h2 class="text-2xl mb-4">Charging Stations</h2>
     <button @click="showAddForm = true" class="btn mb-4">Add Station</button>
@@ -27,6 +28,7 @@ import { ref, onMounted } from "vue";
 import api from "../services/api";
 import StationCard from "../components/StationCard.vue";
 import StationForm from "../components/StationForm.vue";
+import Sidebar from "../components/Sidebar.vue";
 
 const stations = ref([]);
 const showAddForm = ref(false);

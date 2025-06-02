@@ -1,6 +1,5 @@
 <template>
   <div class="flex flex-col min-h-screen">
-    <Sidebar />
     <div class="flex-1 bg-gray-50 pt-16">
       <router-view />
     </div>

@@ -1,4 +1,5 @@
 <template>
+  <Sidebar />
   <div class="map-page">
     <h2>Charger Map</h2>
     <div class="map-wrapper">
@@ -11,6 +12,7 @@
 import { ref, onMounted } from "vue";
 import api from "../services/api";
 import MapView from "../components/MapView.vue";
+import Sidebar from "../components/Sidebar.vue";
 
 const stations = ref([]);
 

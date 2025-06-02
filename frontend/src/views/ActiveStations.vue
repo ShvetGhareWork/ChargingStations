@@ -1,4 +1,5 @@
 <template>
+  <Sidebar />
   <div class="station-wrapper"></div>
 
   <div class="stations-wrapper">
@@ -34,6 +35,7 @@ import { useRouter } from "vue-router";
 import api from "../services/api";
 import StationCard from "../components/StationCard.vue";
 import StationForm from "../components/StationForm.vue";
+import Sidebar from "../components/Sidebar.vue";
 
 const stations = ref([]);
 const editingStation = ref(null);

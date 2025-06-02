@@ -1,4 +1,6 @@
 <template>
+  <Sidebar />
+
   <div class="add-charge-base-container">
     <h1 class="add-charge-base-title">Add New Charge Base</h1>
     <StationForm :isEdit="false" @submit="createStation" />
@@ -9,6 +11,7 @@
 import api from "../services/api";
 import StationForm from "../components/StationForm.vue";
 import { useRouter } from "vue-router";
+import Sidebar from "../components/Sidebar.vue";
 
 const router = useRouter();
 

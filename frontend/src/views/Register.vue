@@ -1,4 +1,6 @@
 <template>
+  <Sidebar />
+
   <div class="login-page">
     <!-- Left Half (Image) -->
     <div class="login-image">
@@ -43,6 +45,7 @@ import { ref } from "vue";
 import api from "../services/api";
 import { useRouter } from "vue-router";
 import Notification from "../components/Notification.vue";
+import Sidebar from "../components/Sidebar.vue";
 
 const name = ref("");
 const email = ref("");
