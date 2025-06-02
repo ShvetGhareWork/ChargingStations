@@ -1,4 +1,5 @@
 <template>
+  <div class="background-wrapper"></div>
   <div class="station-card">
     <h3 class="station-title">{{ station.name }}</h3>
     <div class="station-info">
