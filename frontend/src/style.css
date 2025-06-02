@@ -429,6 +429,122 @@ body {
 /* StationForm */
 /* StationForm.css */
 
+.stations-wrapper {
+  padding: 2rem;
+}
+
+.page-title {
+  font-size: 2rem; /* made larger */
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: #1f2937;
+  text-align: center;
+}
+
+.stations-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.no-stations {
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.no-stations p {
+  font-size: 1.5rem; /* larger */
+  color: #374151;
+  margin-bottom: 1.25rem;
+  font-weight: 500;
+}
+
+.create-button {
+  padding: 0.75rem 2rem; /* larger button */
+  background-color: #3b82f6;
+  color: white;
+  border-radius: 0.75rem;
+  font-size: 1.1rem; /* larger text */
+  font-weight: 600;
+  transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.create-button:hover {
+  background-color: #2563eb;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 640px) {
+  .stations-wrapper {
+    padding: 1.5rem;
+  }
+
+  .page-title {
+    font-size: 1.75rem;
+  }
+
+  .no-stations p {
+    font-size: 1.25rem;
+  }
+
+  .create-button {
+    padding: 0.65rem 1.75rem;
+    font-size: 1rem;
+  }
+}
+
+.stations-wrapper {
+  position: relative;
+  min-height: 100vh; /* full viewport height */
+  padding: 2rem;
+  /* margin-top: 60px; */
+  background-image: url("https://media.istockphoto.com/id/1330589502/photo/electric-vehicle-charging-station.jpg?s=2048x2048&w=is&k=20&c=WiX5WjfoaMZT3vjBGAcGXxQD3O2aKYo_lfYc0e7Aq3Q=");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  color: white; /* text contrast on background */
+  z-index: ;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* Add overlay to darken the image for readability */
+.stations-wrapper::before {
+  content: "";
+  position: fixed; /* fixed to cover full page */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* dark overlay */
+  z-index: -1;
+}
+
+.page-title {
+  color: #f9fafb; /* lighter text */
+}
+
+/* Adjust no stations message */
+.no-stations p {
+  color: #f3f4f6;
+}
+
+/* Adjust button for better contrast */
+.create-button {
+  background-color: #2563eb;
+  color: #f9fafb;
+  box-shadow: 0 4px 8px rgba(37, 99, 235, 0.4);
+}
+
+.create-button:hover {
+  background-color: #1e40af;
+  box-shadow: 0 6px 12px rgba(30, 64, 175, 0.6);
+}
+
 .station-form-container {
   position: relative;
   padding: 1.5rem; /* a bit more padding */

@@ -24,11 +24,7 @@
         <button type="submit" class="btn">Login</button>
       </form>
     </div>
-    <Notification
-      v-if="showNotification"
-      message="Login successful!"
-      type="success"
-    />
+    <Notification v-if="visible" message="Login successful!" type="success" />
     <Notification
       v-if="showErrorNotification"
       message="Login failed. Please try again."

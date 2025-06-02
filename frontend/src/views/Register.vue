@@ -26,7 +26,7 @@
       </form>
     </div>
     <Notification
-      v-if="showNotification"
+      v-if="visible"
       message="Registration successful! Please login."
       type="success"
     />
