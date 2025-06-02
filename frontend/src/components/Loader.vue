@@ -1,6 +1,8 @@
 <template>
   <div>
-    <div v-if="loading" class="loader"></div>
+    <div v-if="loading" class="loader-container">
+      <div class="loader"></div>
+    </div>
     <div v-else>
       <p>API Data Loaded!</p>
       <pre>{{ apiData }}</pre>
