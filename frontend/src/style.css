@@ -505,7 +505,7 @@ body {
   background-size: cover;
   background-position: center;
   color: white; /* text contrast on background */
-  z-index: ;
+  /* z-index: ; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -788,4 +788,25 @@ html,
   font-weight: 700;
   color: black;
   text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Loader */
+
+.loader {
+  border: 8px solid #f3f3f3; /* Light gray */
+  border-top: 8px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+  margin: 50px auto;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
