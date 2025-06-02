@@ -30,7 +30,7 @@
 import { ref, defineComponent, h, watch } from "vue";
 import { RouterLink, useRouter } from "vue-router";
 import { isLoggedIn } from "../services/state.js"; // import reactive login state
-import { Notification } from "../components/Notification.vue"; // Import Notification component
+import Notification from "../components/Notification.vue"; // Import Notification component
 
 const menuOpen = ref(false);
 const router = useRouter();
