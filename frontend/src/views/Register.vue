@@ -26,12 +26,23 @@
       </form>
     </div>
   </div>
+  <Notification
+    v-if="showNotification"
+    message="Registration successful! Please login."
+    type="success"
+  />
+  <Notification
+    v-if="showErrorNotification"
+    message="Registration failed. Please try again."
+    type="error"
+  />
 </template>
 
 <script setup>
 import { ref } from "vue";
 import api from "../services/api";
 import { useRouter } from "vue-router";
+import { Notification } from "../components/Notification.vue"; // Import Notification component
 
 const name = ref("");
 const email = ref("");

@@ -18,12 +18,19 @@
   <div v-if="menuOpen" class="mobile-menu">
     <NavLinks @link-clicked="menuOpen = false" @logout="handleLogout" />
   </div>
+
+  <Notification
+    v-if="showLogoutMessage"
+    message="Logged out successfully!"
+    type="success"
+  />
 </template>
 
 <script setup>
 import { ref, defineComponent, h, watch } from "vue";
 import { RouterLink, useRouter } from "vue-router";
 import { isLoggedIn } from "../services/state.js"; // import reactive login state
+import { Notification } from "../components/Notification.vue"; // Import Notification component
 
 const menuOpen = ref(false);
 const router = useRouter();

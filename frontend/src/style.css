@@ -278,96 +278,99 @@ body {
 
 /* StationCard.css */
 
+/* Station Card Base */
 .station-card {
   position: relative;
-  border: 1px solid #e5e7eb; /* Tailwind's border */
-  padding: 1.25rem 1.5rem; /* smaller padding but balanced */
-  border-radius: 1rem; /* rounded corners */
-  background-color: #fff; /* fallback */
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12); /* softer shadow */
+  border: 1px solid #e5e7eb;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  background-color: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
   transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
   cursor: pointer;
   overflow: hidden;
   z-index: 1;
-  max-width: 350px; /* smaller width */
+  max-width: 350px;
+  margin: 1rem auto;
   background-image: url("https://media.istockphoto.com/id/1330589502/photo/electric-vehicle-charging-station.jpg?s=2048x2048&w=is&k=20&c=WiX5WjfoaMZT3vjBGAcGXxQD3O2aKYo_lfYc0e7Aq3Q=");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  color: #1f2937; /* text-gray-800 */
+  color: #1f2937;
 }
 
-/* Overlay to soften background image for readability */
+/* Background Overlay for Readability */
 .station-card::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(255, 255, 255, 0.9); /* slightly more opaque */
+  background: rgba(255, 255, 255, 0.9);
   z-index: -1;
   border-radius: 1rem;
 }
 
-/* Hover effect */
+/* Hover Animation */
 .station-card:hover {
-  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.18); /* stronger shadow on hover */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
   transform: translateY(-6px);
 }
 
-/* Title */
+/* Title Styling */
 .station-title {
-  font-size: 1.25rem; /* smaller */
-  font-weight: 600; /* font-semibold */
-  margin-bottom: 0.5rem;
-  color: #111827; /* dark */
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: #111827;
+  text-align: center;
 }
 
-/* Info text */
+/* Station Info Block */
 .station-info {
-  color: #4b5563; /* text-gray-600 */
-  margin-bottom: 1rem;
-  line-height: 1.4;
-  font-size: 0.9rem;
+  color: #4b5563;
+  margin-bottom: 1.25rem;
+  line-height: 1.5;
+  font-size: 0.95rem;
 }
 
 .station-info p {
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.5rem;
 }
 
 .station-info span {
-  font-weight: 500;
+  font-weight: 600;
   color: #374151;
 }
 
-/* Button group */
+/* Button Group Styling */
 .button-group {
   display: flex;
-  gap: 0.75rem; /* slightly smaller gap */
+  gap: 0.75rem;
   margin-top: 1rem;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-/* Common button styles */
+/* Button Base Styles */
 .button {
-  padding: 0.4rem 1rem; /* smaller buttons */
+  padding: 0.5rem 1.2rem;
   border-radius: 0.5rem;
   color: white;
   font-weight: 600;
-  font-size: 0.9rem;
-  transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+  font-size: 0.95rem;
+  transition: background-color 0.25s ease-in-out, transform 0.2s ease-in-out;
   cursor: pointer;
-  transform-origin: center;
   user-select: none;
   flex: 1 1 auto;
-  min-width: 100px; /* smaller min width */
+  min-width: 120px;
   text-align: center;
+  border: none;
 }
 
 .button:hover {
   transform: scale(1.05);
 }
 
-/* Edit button - blue */
+/* Edit Button Color */
 .button-edit {
   background-color: #3b82f6;
 }
@@ -376,7 +379,7 @@ body {
   background-color: #2563eb;
 }
 
-/* Delete button - red */
+/* Delete Button Color */
 .button-delete {
   background-color: #ef4444;
 }
@@ -385,20 +388,41 @@ body {
   background-color: #dc2626;
 }
 
-/* Responsive adjustments */
-@media (max-width: 640px) {
+/* Background Wrapper */
+.background-wrapper {
+  display: none;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
   .station-card {
-    max-width: 100%;
-    padding: 1rem 1.25rem;
+    max-width: 90%;
+    padding: 1.25rem;
   }
 
   .button-group {
     flex-direction: column;
+    gap: 0.75rem;
   }
 
   .button {
     width: 100%;
     min-width: unset;
+  }
+}
+
+@media (max-width: 480px) {
+  .station-title {
+    font-size: 1.2rem;
+  }
+
+  .station-info {
+    font-size: 0.9rem;
+  }
+
+  .button {
+    font-size: 0.85rem;
+    padding: 0.45rem 1rem;
   }
 }
 
