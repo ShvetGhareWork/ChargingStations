@@ -5,7 +5,7 @@
 
     <!-- Desktop Navigation -->
     <nav class="desktop-nav">
-      <NavLinks />
+      <NavLinks @logout="handleLogout" />
     </nav>
 
     <!-- Mobile Menu Button -->
@@ -16,15 +16,22 @@
 
   <!-- Mobile Dropdown Menu -->
   <div v-if="menuOpen" class="mobile-menu">
-    <NavLinks @link-clicked="menuOpen = false" />
+    <NavLinks @link-clicked="menuOpen = false" @logout="handleLogout" />
   </div>
 </template>
 
 <script setup>
 import { ref, defineComponent, h } from "vue";
-import { RouterLink } from "vue-router";
+import { RouterLink, useRouter } from "vue-router";
 
 const menuOpen = ref(false);
+const router = useRouter();
+
+// Logout handler
+const handleLogout = () => {
+  localStorage.removeItem("token");
+  router.push("/login");
+};
 
 // Reusable NavLinks component
 const NavLinks = defineComponent({
@@ -33,7 +40,6 @@ const NavLinks = defineComponent({
     const handleClick = () => emit("link-clicked");
     const handleLogout = () => emit("logout");
 
-    // Check if user is logged in by presence of token
     const loggedIn = !!localStorage.getItem("token");
 
     return () =>
@@ -85,8 +91,6 @@ const NavLinks = defineComponent({
             },
             "Register"
           ),
-
-        // Add logout button only if logged in
         loggedIn &&
           h(
             "button",
