@@ -33,7 +33,7 @@
     </div>
 
     <!-- Loader overlay -->
-    <Loader v-if="loading" />
+    <!-- <Loader v-if="loading" /> -->
 
     <Notification v-if="visible" message="Login successful!" type="success" />
     <Notification
@@ -51,7 +51,7 @@ import { useRouter } from "vue-router";
 import { isLoggedIn } from "../services/state.js";
 import Notification from "../components/Notification.vue";
 import Sidebar from "../components/Sidebar.vue";
-import Loader from "../components/Loader.vue";
+// import Loader from "../components/Loader.vue";
 
 const email = ref("");
 const password = ref("");
