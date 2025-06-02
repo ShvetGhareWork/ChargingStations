@@ -288,7 +288,7 @@ body {
   transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
   cursor: pointer;
   overflow: hidden;
-  z-index: 0;
+  z-index: 1;
   max-width: 350px; /* smaller width */
   background-image: url("https://media.istockphoto.com/id/1330589502/photo/electric-vehicle-charging-station.jpg?s=2048x2048&w=is&k=20&c=WiX5WjfoaMZT3vjBGAcGXxQD3O2aKYo_lfYc0e7Aq3Q=");
   background-position: center;
